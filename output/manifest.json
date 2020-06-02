@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Example Extension",
+  "description": "Example using webext-react",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webNavigation",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["js/vendor.js", "js/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["js/vendor.js", "js/content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
