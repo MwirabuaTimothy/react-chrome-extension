@@ -21,9 +21,9 @@ const Content = props => {
   return (
     <Modal>
 
-      <h1>Example React Extension</h1>
+      <H2>Example React Extension</H2>
       
-      <h2>Count: {props.count}</h2>
+      <H3>Count: {props.count}</H3>
 
       <Button first onClick={onDecrease}>Decrease</Button>
       <Button medium onClick={onIncrease}>Increase</Button>
@@ -38,13 +38,16 @@ const Modal = styled.div`
   background: #999;
   border: 10px solid #333;
   border-radius: 10px;
-  width: 300px;
-  height: 120px;
+  width: 350px;
+  height: 200px;
   position: fixed;
   right: 20px;
   padding: 10px;
 }
 `
+const H2 = styled.h2`font-size: 1.5em; text-align:center`
+const H3 = styled.h3`font-size: 1.2em; text-align:center`
+
 const Button = styled.button`
   background: white;
   color: palevioletred;
