@@ -9,7 +9,7 @@ const store = new Store({
   portName: 'example' 
 })
 
-// wait for the store to connect to the background page
+// Wait for the store to connect to the background page
 // The store implements the same interface as Redux's store
 store.ready().then(() =>{
   window.addEventListener('load', loadContentScript)
