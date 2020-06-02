@@ -1,8 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { Provider, connect } from 'react-redux'
+import { Store } from 'webext-redux'
+import { PORT, ID } from './constants'
 import styled from 'styled-components'
 import { countReset, countIncrease, countDecrease } from './countReducer'
-import { bindActionCreators } from 'redux'
 
 const Content = props => {
   
@@ -33,6 +35,36 @@ const Content = props => {
   );
 }
 
+
+const mapStateToProps = (state) => {
+  return {
+    count: state.count || 0,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ countReset, countIncrease, countDecrease }, dispatch)
+}
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(Content)
+
+export const proxyStore = new Store({
+  portName: PORT,
+  extensionId: ID
+})
+
+export function showContentUI(){
+  const injectedDOM = document.createElement('div')
+  injectedDOM.id = 'react-chrome-extension'
+  document.body.appendChild(injectedDOM)
+
+  ReactDOM.render(
+    <Provider store={proxyStore}>      
+      <ConnectedApp />
+    </Provider>, injectedDOM
+  )
+}
+
 // Styling
 const Modal = styled.div`
   background: #999;
@@ -57,16 +89,3 @@ const Button = styled.button`
   border-radius: 3px;
   margin-left: ${props => props.first ? '0' : '0.5em'};
 `
-
-
-const mapStateToProps = (state) => {
-  return {
-    count: state.count || 0,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ countReset, countIncrease, countDecrease }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content)
