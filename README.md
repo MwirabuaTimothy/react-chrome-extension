@@ -1,5 +1,5 @@
 
-A minimal chrome extension starter with a basic counter app using webext-redux.
+A minimal chrome extension starter with a basic counter app using react, redux, webext-redux, styled-components and webpack
 
 ## Getting Started
 
