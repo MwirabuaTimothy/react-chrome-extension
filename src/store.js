@@ -2,7 +2,7 @@ import { createStore } from 'redux'
 import { wrapStore } from 'webext-redux'
 import { combineReducers } from 'redux'
 import { count } from './countReducer'
-
+import { PORT } from './constants'
 export const initializeStore = () => {
 
   const store = createStore(
@@ -11,7 +11,9 @@ export const initializeStore = () => {
     })
   )
 
-  wrapStore(store, { portName: 'example' })
+  wrapStore(store, { 
+    portName: PORT
+  })
 
   return store
 }
