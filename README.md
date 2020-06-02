@@ -26,4 +26,5 @@ $ yarn build  # compiles the ./output/js
 ### Credits
 
 https://github.com/ihenvyr/react-chrome-extension
+
 https://github.com/tshaddix/webext-redux
