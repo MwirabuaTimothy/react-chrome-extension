@@ -1,7 +1,7 @@
 {
-  "name": "webpack-test-app",
+  "name": "react-chrome-extension",
   "version": "0.0.1",
-  "description": "testing webpack",
+  "description": "Minimal webext-redux chrome extension for testing webpack-dev-server",
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --mode development",
